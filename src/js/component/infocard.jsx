@@ -8,7 +8,9 @@ const Infocard = (props) => {
     const handleLikes = () => {
        setLike(!like);
     }
-    const type= "character";
+
+
+    
     return(
         <div className="card mx-3 my-5" style={{ width: "18rem", flex: "0 0 auto" }}>
             <img src={props.img} onError={(e) => { e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg";
@@ -23,7 +25,7 @@ const Infocard = (props) => {
                 {props.terrain && <p className="card-text">Terrain: {props.terrain}</p>}
 
                 <div className="d-flex justify-content-end">
-                    <button type="button" className="btn btn-dark mx-2" onClick={()=> nav(`/single/${type}/${props.id}`)}>+ Info</button>
+                    <button type="button" className="btn btn-dark mx-2" onClick={()=> nav(`/single/${props.type}/${props.id-1}`)}>+ Info</button>
                     <button type="button" className="btn btn-dark" onClick={handleLikes}><i className="fas fa-heart" style={{color: like ? "#FCA311" : "#FFFFFF"}}></i></button>
                 </div>
                 

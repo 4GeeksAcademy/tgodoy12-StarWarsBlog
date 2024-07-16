@@ -4,7 +4,7 @@ import { Context } from "../store/appContext.js";
 
 const Carrousel = ({ type }) => {
     const { store } = useContext(Context);
-    console.log(store.characters)
+    
 
     //obtencion de los arrays de cada type desde el store
     const getData = {
@@ -12,7 +12,7 @@ const Carrousel = ({ type }) => {
         planets: store.planets
         // vehicles: store.vehicles
     }[type]
-
+    
     //obtencion de las rutas de las imágenes por cada type
     const imgUrl = {
         characters: "https://starwars-visualguide.com/assets/img/characters/",
@@ -25,6 +25,8 @@ const Carrousel = ({ type }) => {
         switch (type) {
             case "characters":
                 return {
+                    type: type,
+                    id: item.id,
                     name: item.name,
                     gender: item.gender,
                     hairColor: item.hair_color,
@@ -32,6 +34,8 @@ const Carrousel = ({ type }) => {
                 };
             case "planets":
                 return {
+                    type: type,
+                    id: item.id,
                     name: item.name,
                     population: item.population,
                     climate: item.climate,
@@ -41,6 +45,7 @@ const Carrousel = ({ type }) => {
                 return {};
         }
     }
+
     
     return (
         <div className="container my-5 pb-5">
@@ -51,8 +56,9 @@ const Carrousel = ({ type }) => {
                 <div className="d-flex overflow-x-auto" style={{ overflowX: "scroll" }}>
 
                 {getData.map((item, index) => (
-                        <Infocard 
-                            key={index} 
+                        <Infocard
+                            type={item.type} 
+                            key={index}
                             id={item.id} 
                             img={`${imgUrl}${item.id}.jpg`} 
                             {...displayedProps(item)} 

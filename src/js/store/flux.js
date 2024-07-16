@@ -1,18 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			characters: [],
+			planets: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -24,19 +14,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+			getAllCharacters: async () => {
+				
+				try {
+					const response = await fetch("https://swapi.dev/api/people/");
+					if(!response.ok) {
+						throw new Error("Status: " + response.status)
+					}
+					const data = await response.json();
+					const charactersId = data.results.map(character => {
+						const id = character.url.split("/")[5];
+						return { ...character, id };
+					})
+					// console.log(data.results)
+					setStore({ characters: charactersId });
+					
+					return true;
+				} catch (error) {
+					console.log(error);
+					return false;	
+				}
+			},
+			getAllPlanets: async () => {
+				
+				try {
+					const response = await fetch("https://swapi.dev/api/planets/");
+					if(!response.ok) {
+						throw new Error("Status: " + response.status)
+					}
+					const data = await response.json();
+					const planetsId = data.results.map(planet => {
+						const id = planet.url.split("/")[5];
+						return { ...planet, id };
+					})
+					// console.log(data.results)
+					setStore({ planets: planetsId });
+					
+					return true;
+				} catch (error) {
+					console.log(error);
+					return false;	
+				}
 			}
 		}
 	};

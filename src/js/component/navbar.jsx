@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
 import starwars from "../../img/icons8-la-guerra-de-las-galaxias-50.png";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+	
+	console.log(store.favorites);
 	return (
+
+
 		<nav className="navbar navbar-dark bg-dark m-0 p-0">
 
 			<div className="container">
@@ -18,7 +24,10 @@ export const Navbar = () => {
 						
 					</button>
 					<ul className="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
-						<li><a className="dropdown-item" href="#">Likes</a></li>
+						{store.favorites.map((item, index) => (
+							<li className="dropdown-item d-flex justify-content-between" key={index}>{item}<button type="button" onClick={() => actions.likes(item)} className="btn btn-sm btn-outline-secondary"><i className="fas fa-trash"></i></button></li>
+						))}
+						
 						
 					</ul>
 				</div>

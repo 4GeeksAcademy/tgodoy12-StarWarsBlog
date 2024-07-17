@@ -2,7 +2,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			characters: [],
-			planets: []
+			planets: [],
+			vehicles: [],
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -55,6 +57,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 					return false;	
 				}
+			},
+			likes: (name) => {
+				const store = getStore();
+				let newFavorites;
+
+				if(store.favorites.includes(name)) {
+					newFavorites = store.favorites.filter(fav => fav !== name);
+				}else {
+					newFavorites = [...store.favorites, name];
+				}
+				 
+                setStore({ favorites: newFavorites });
 			}
 		}
 	};

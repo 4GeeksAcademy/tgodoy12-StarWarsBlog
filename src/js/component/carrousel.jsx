@@ -6,6 +6,7 @@ const Carrousel = ({ type }) => {
     const { store } = useContext(Context);
     
 
+
     //obtencion de los arrays de cada type desde el store
     const getData = {
         characters: store.characters,

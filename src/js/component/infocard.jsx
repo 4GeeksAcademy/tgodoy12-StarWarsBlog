@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext.js";
 import { useNavigate } from "react-router-dom";
 
 const Infocard = (props) => {
+    const {store, actions} = useContext(Context);
+
     const nav = useNavigate();
     const [like, setLike] = useState(false);
 
     const handleLikes = () => {
        setLike(!like);
+       actions.likes(props.name);
+       console.log(store.favorites)
     }
-
-
+    
     
     return(
         <div className="card mx-3 my-5" style={{ width: "18rem", flex: "0 0 auto" }}>

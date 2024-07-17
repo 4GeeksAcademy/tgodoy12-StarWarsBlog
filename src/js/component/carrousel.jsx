@@ -4,21 +4,19 @@ import { Context } from "../store/appContext.js";
 
 const Carrousel = ({ type }) => {
     const { store } = useContext(Context);
-    
-
 
     //obtencion de los arrays de cada type desde el store
     const getData = {
         characters: store.characters,
-        planets: store.planets
-        // vehicles: store.vehicles
+        planets: store.planets,
+        vehicles: store.vehicles
     }[type]
     
     //obtencion de las rutas de las imágenes por cada type
     const imgUrl = {
         characters: "https://starwars-visualguide.com/assets/img/characters/",
-        planets: "https://starwars-visualguide.com/assets/img/planets/"
-        // vehicles: "https://starwars-visualguide.com/assets/img/vehicles/"
+        planets: "https://starwars-visualguide.com/assets/img/planets/",
+        vehicles: "https://starwars-visualguide.com/assets/img/vehicles/"
     }[type]
 
     //switch para mostrar los props en la InfoCard segun el type
@@ -42,11 +40,20 @@ const Carrousel = ({ type }) => {
                     climate: item.climate,
                     terrain: item.terrain
                 };
+            case "vehicles":
+                return {
+                    type: type,
+                    id: item.id,
+                    name: item.name,
+                    model: item.model,
+                    manufacturer: item.manufacturer,
+                    cost: item.cost_in_credits
+                };
             default:
                 return {};
         }
     }
-
+    console.log(getData.planets)
     
     return (
         <div className="container my-5 pb-5">

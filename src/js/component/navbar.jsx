@@ -6,11 +6,9 @@ import starwars from "../../img/icons8-la-guerra-de-las-galaxias-50.png";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	
-	console.log(store.favorites);
+	// console.log(store.favorites);
 	return (
-
-
-		<nav className="navbar navbar-dark bg-dark m-0 p-0">
+		<nav className="navbar fixed-top navbar-dark bg-dark mb-5 p-0">
 
 			<div className="container">
 				<div className="icon">
@@ -25,7 +23,7 @@ export const Navbar = () => {
 					</button>
 					<ul className="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
 						{store.favorites.map((item, index) => (
-							<li className="dropdown-item d-flex justify-content-between" key={index}>{item}<button type="button" onClick={() => actions.likes(item)} className="btn btn-sm btn-outline-secondary"><i className="fas fa-trash"></i></button></li>
+							<li className="dropdown-item d-flex justify-content-between" key={index}>{item}<button type="button" onClick={() => actions.likes(item)} className="btn btn-sm ms-3 btn-outline-secondary"><i className="fas fa-trash"></i></button></li>
 						))}
 						
 						

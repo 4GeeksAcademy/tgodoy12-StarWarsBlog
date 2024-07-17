@@ -58,6 +58,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;	
 				}
 			},
+			getAllVehicles: async () => {
+				
+				try {
+					const response = await fetch("https://swapi.dev/api/vehicles/");
+					if(!response.ok) {
+						throw new Error("Status: " + response.status)
+					}
+					const data = await response.json();
+					const vehiclesId = data.results.map(vehicle => {
+						const id = vehicle.url.split("/")[5];
+						return { ...vehicle, id };
+					})
+					console.log(data.results)
+					setStore({ vehicles: vehiclesId });
+					
+					return true;
+				} catch (error) {
+					console.log(error);
+					return false;	
+				}
+			},
+
 			likes: (name) => {
 				const store = getStore();
 				let newFavorites;

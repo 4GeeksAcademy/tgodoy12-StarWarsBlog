@@ -10,6 +10,7 @@ export const Home = () => {
 
 		<Carrousel type="characters" />
 		<Carrousel type="planets" />
+		<Carrousel type="vehicles" />
 	</div>
 
 	);

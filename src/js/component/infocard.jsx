@@ -21,12 +21,21 @@ const Infocard = (props) => {
                 e.target.style.maxHeight = "286px";}} className="card-img-top" alt={props.name}/>
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
+
+                {/* caso characters */}
                 {props.gender && <p className="card-text">Gender: {props.gender}</p>}
                 {props.hairColor && <p className="card-text">Hair Color: {props.hairColor}</p>}
                 {props.eyeColor && <p className="card-text">Eye Color: {props.eyeColor}</p>}
+
+                {/* caso planets */}
                 {props.population && <p className="card-text">Population: {props.population}</p>}
                 {props.climate && <p className="card-text">Climate: {props.climate}</p>}
                 {props.terrain && <p className="card-text">Terrain: {props.terrain}</p>}
+
+                {/* caso vehicles */}
+                {props.model && <p className="card-text">Model: {props.model}</p>}
+                {props.manufacturer && <p className="card-text">Manufacturer: {props.manufacturer}</p>}
+                {props.cost && <p className="card-text">Cost: {props.cost}</p>}
 
                 <div className="d-flex justify-content-end">
                     <button type="button" className="btn btn-dark mx-2" onClick={()=> nav(`/single/${props.type}/${props.id-1}`)}>+ Info</button>

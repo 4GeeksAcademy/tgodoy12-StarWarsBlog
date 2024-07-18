@@ -4,3 +4,8 @@
     object-fit: cover;
     
 }
+
+.single-page-img {
+    object-fit: contain;
+    max-height: 500px;
+}

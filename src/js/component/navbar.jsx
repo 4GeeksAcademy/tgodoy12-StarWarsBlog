@@ -8,7 +8,7 @@ export const Navbar = () => {
 	
 	// console.log(store.favorites);
 	return (
-		<nav className="navbar sticky-top navbar-dark bg-dark mb-5 p-0">
+		<nav className="navbar sticky-top navbar-dark bg-black mb-5 p-0">
 
 			<div className="container">
 				<div className="icon">
@@ -34,7 +34,7 @@ export const Navbar = () => {
 					{/* map de store.favorites para la lista del dropdown y empty en caso de ser 0 */}
 					<ul className="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
 					{store.favorites.length === 0 ? (
-						<li className="dropdown-item d-flex justify-content-between">Empty</li>
+						<li className="dropdown-item d-flex justify-content-center fs-6 fst-italic fw-lighter">( Empty )</li>
 					) : (
 					
 						store.favorites.map((item, index) => (

@@ -53,15 +53,15 @@ const Carrousel = ({ type }) => {
                 return {};
         }
     }
-    console.log(getData.planets)
     
     return (
         <div className="container my-5 pb-5">
 
             {/* Characters */}
             <div className="mb-5">
-                <h2 className="text-start mb-3">{type}</h2>
-                <div className="d-flex overflow-x-auto" style={{ overflowX: "scroll" }}>
+                <h2 className="text-center display-4 mb-3 text-white">{type}</h2>
+                <div className="d-flex overflow-x-auto" style={{ overflowX: "scroll", background: "#495057", borderRadius: "10px",
+                    border: "3px solid #212529"}}>
 
                 {getData.map((item, index) => (
                         <Infocard

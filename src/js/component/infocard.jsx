@@ -47,7 +47,7 @@ const Infocard = (props) => {
                 {props.cost && <p className="card-text">Cost: {props.cost}</p>}
 
                 <div className="d-flex justify-content-end">
-                    <button type="button" className="btn btn-dark mx-2" onClick={()=> nav(`/single/${props.type}/${props.id-1}`)}>+ Info</button>
+                    <button type="button" className="btn btn-dark mx-2" onClick={() => nav(`/single/${props.type}/${props.id}`)}>+ Info</button>
                     <button type="button" className="btn btn-dark" onClick={handleLikes}><i className="fas fa-heart" style={{color: like ? "#FCA311" : "#FFFFFF"}}></i></button>
                 </div>
                 

@@ -5,36 +5,49 @@ import { Context } from "../store/appContext";
 
 export const Single = props => {
 	const { store, actions } = useContext(Context);
-	const param = useParams();
-	const params = useParams();
+	const { type, theid } = useParams();
+	const [ item, setItem ] = useState(null);
+
+	//busqueda por type(character, planets or vehicles) y por id
+	useEffect(() => {
+		const foundItem = store[type]?.find(item => item.id == theid);
+        if (foundItem) {
+            setItem(foundItem);
+        }
+	}, []);
+
+	if (!item) {
+        return <div>Loading...</div>;
+    }
+
+
+
+	
 	return (
 		
 		<div className="container my-5">
-			<h1 className="display-4">This will show the demo element: {store[param.type][params.theid].name}</h1>
+			<Link to="/">
+				<button className="btn btn-light mb-5" role="button">
+					<i className="fas fa-long-arrow-alt-left"></i>
+					<span className="ms-2">Back home</span>
+				</button>
+			</Link>
 
-			<div class="row">
-				<div class="col-sm-5 col-md-6">
+			<div className="row g-3 text-white">
+				<div className="col-sm-12 col-md-12 col-lg-6">
 
-				<div class="card mb-3">
-					<img src="..." class="card-img-top" alt="..."/>
-					<div class="card-body">
-						<h5 class="card-title">Card title</h5>
-						<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-						<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+					<div className="mb-3 pt-3 d-flex justify-content-center me-5">
+						<img src={`https://starwars-visualguide.com/assets/img/${type}/${item.id}.jpg`} className="single-page-img" alt={item.name}/>
 					</div>
-				</div>
 
 				</div>
-				<div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
+
+				<div className="col-sm-12 col-md-12 col-lg-6">
+					<h1 className="display-2 fw-bold m-0 p-0">{item.name}</h1>
 					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, atque quasi quidem ducimus tempore, cum iusto repudiandae quae odit nobis dignissimos laborum tenetur suscipit reprehenderit numquam laudantium beatae cumque vel.
 				</div>
 			</div>
 
-			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
-					Back home
-				</span>
-			</Link>
 		</div>
 	);
 };

@@ -44,7 +44,49 @@ export const Single = props => {
 
 				<div className="col-sm-12 col-md-12 col-lg-6">
 					<h1 className="display-2 fw-bold m-0 p-0">{item.name}</h1>
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, atque quasi quidem ducimus tempore, cum iusto repudiandae quae odit nobis dignissimos laborum tenetur suscipit reprehenderit numquam laudantium beatae cumque vel.
+					
+					<table className="table table-hover text-white mt-4">
+						<tbody>
+							{type == "characters" && (
+								<>
+								<tr>
+									<th scope="row">Height :</th>
+									<td>{item.height}</td>
+								</tr>
+								<tr>
+									<th scope="row">Mass :</th>
+									<td>{item.mass}</td>
+								</tr>
+								<tr>
+									<th scope="row">Hair color :</th>
+									<td>{item.hair_color}</td>
+								</tr>
+								<tr>
+									<th scope="row">Skin color :</th>
+									<td>{item.skin_color}</td>
+								</tr>
+								<tr>
+									<th scope="row">Eye color :</th>
+									<td>{item.eye_color}</td>
+								</tr>
+								<tr>
+									<th scope="row">Birth year :</th>
+									<td>{item.birth_year}</td>
+								</tr>
+								<tr>
+									<th scope="row">Gender :</th>
+									<td>{item.gender}</td>
+								</tr>
+								<tr>
+									<th scope="row">Home world :</th>
+									<td>{item.home_world}</td>
+								</tr>
+								</>
+							)}
+							{/* hacer un componente tabla para mostrar los tres tipos de types */}
+						</tbody>
+					</table>
+
 				</div>
 			</div>
 

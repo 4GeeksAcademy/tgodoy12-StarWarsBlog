@@ -5,3 +5,8 @@ body {
     font-family: monospace;
     background-color: #212529;
 }
+
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+    color: #fca311;
+}

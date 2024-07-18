@@ -60,7 +60,7 @@ const Carrousel = ({ type }) => {
             {/* Characters */}
             <div className="mb-5">
                 <h2 className="text-center display-4 mb-3 text-white">{type}</h2>
-                <div className="d-flex overflow-x-auto" style={{ overflowX: "scroll", background: "#495057", borderRadius: "10px",
+                <div className="d-flex overflow-x-auto" style={{ overflowX: "scroll", background: "black", borderRadius: "10px",
                     border: "3px solid #212529"}}>
 
                 {getData.map((item, index) => (

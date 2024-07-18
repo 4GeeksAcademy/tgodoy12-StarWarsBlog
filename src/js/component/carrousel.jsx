@@ -67,7 +67,9 @@ const Carrousel = ({ type }) => {
                         <Infocard
                             type={item.type} 
                             key={index}
-                            id={item.id} 
+                            id={item.id}
+                            // el prop isFavorite es para la funcion del heart button de la card
+                            isFavorite={store.favorites.includes(item.name)} 
                             img={`${imgUrl}${item.id}.jpg`} 
                             {...displayedProps(item)} 
                         />
@@ -75,22 +77,6 @@ const Carrousel = ({ type }) => {
                     
                 </div>
             </div>
-            
-
-            {/* Planets
-
-            <div className="mb-5">
-                <h2 className="text-start mb-3">Planets</h2>
-                <div className="d-flex overflow-x-auto" style={{ overflowX: "scroll" }}>
-
-                    {store.planets.map((planet, index) => (
-                        <Infocard id={planet.id} key={index} name={planet.name} gender={planet.gender} hairColor={planet.hair_color} 
-                        eyeColor={planet.eye_color} img={`https://starwars-visualguide.com/assets/img/planets/${planet.id}.jpg`} />
-                    ))
-                    }
-                    
-                </div>
-            </div> */}
         
         </div>
     );

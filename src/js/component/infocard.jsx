@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext.js";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +8,13 @@ const Infocard = (props) => {
     const nav = useNavigate();
     const [like, setLike] = useState(store.favorites.includes(props.name));
 
+    //cuando hay un cambio en el props.isFavorite, se setea el like al estado actual,
+    //provocando el cambio del color del corazón. Esto es para el caso de borrar un item
+    //de la lista a traves del trash icon, y que el corazón pase al color blanco nuevamente
+    useEffect(() => {
+        setLike(props.isFavorite);
+    }, [props.isFavorite]);
+
     const handleLikes = () => {
        if(store.favorites.includes(props.name)) {
         setLike(false);
@@ -16,7 +23,6 @@ const Infocard = (props) => {
        } 
        actions.likes(props.name);
     }
-    
     
     return(
         <div className="card mx-3 my-5" style={{ width: "18rem", flex: "0 0 auto" }}>

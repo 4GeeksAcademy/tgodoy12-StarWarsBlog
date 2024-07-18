@@ -6,12 +6,15 @@ const Infocard = (props) => {
     const {store, actions} = useContext(Context);
 
     const nav = useNavigate();
-    const [like, setLike] = useState(false);
+    const [like, setLike] = useState(store.favorites.includes(props.name));
 
     const handleLikes = () => {
-       setLike(!like);
+       if(store.favorites.includes(props.name)) {
+        setLike(false);
+       } else {
+        setLike(true);
+       } 
        actions.likes(props.name);
-       console.log(store.favorites)
     }
     
     

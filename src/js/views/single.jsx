@@ -20,7 +20,7 @@ export const Single = props => {
 
 	if (!item) {
         return <div>Loading...</div>;
-    }
+	}
 
 	return (
 		
@@ -43,7 +43,11 @@ export const Single = props => {
 
 				<div className="col-sm-12 col-md-12 col-lg-6">
 					<h1 className="display-2 fw-bold m-0 p-0">{item.name}</h1>
-						<TableInfo {...item} />
+						
+						{/* especifico el type para pasarlo a table info y ...item es una forma mas facil
+						de pasar por props las propiedades del item. Sino, tendría que pasarlo uno por uno */}
+						<TableInfo type={type} {...item} />
+						
 						{/* <TableInfo height={item.height} mass={item.mass} hairColor={item.hair_color} skinColor={item.skin_color} eyeColor={item.eye_color}
 							birthYear={item.birth_year} gender={item.gender} /> */}
 						

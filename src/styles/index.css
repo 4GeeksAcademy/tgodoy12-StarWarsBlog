@@ -10,3 +10,13 @@ body {
 .table-hover tbody tr:hover th {
     color: #fca311;
 }
+
+.button-with-image {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+.btn-dark:hover {
+    color: #fca311; 
+}

@@ -92,6 +92,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 				 
                 setStore({ favorites: newFavorites });
 			}
+			//para que no de error cuando quiero entrar a un id especifico sin pasar por el home
+			// loadStore: async (type) => {
+			// 	try {
+			// 		const response = await fetch(`https://swapi.dev/api/${type}/`);
+			// 		if(!response.ok) {
+			// 		throw new Error("Status: " + response.status)
+			// 		}
+			// 		const data = await response.json();
+			// 		const typeId = data.results.map(item => {
+			// 			const id = item.url.split("/")[5];
+			// 			return { ...item, id };
+			// 		})
+			// 		setStore({ [type]: typeId });
+			// 		return true;
+			// 	} catch (error) {
+			// 		console.log(error);
+			// 		return false;	
+			// 	}
+				
+			// }
 		}
 	};
 };

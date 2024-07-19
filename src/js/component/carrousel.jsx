@@ -10,14 +10,14 @@ const Carrousel = ({ type }) => {
         characters: store.characters,
         planets: store.planets,
         vehicles: store.vehicles
-    }[type]
+    }[type]  //dependiendo del valor del type, getData va a ser igual a uno de los valores del objeto
     
     //obtencion de las rutas de las imágenes por cada type
     const imgUrl = {
         characters: "https://starwars-visualguide.com/assets/img/characters/",
         planets: "https://starwars-visualguide.com/assets/img/planets/",
         vehicles: "https://starwars-visualguide.com/assets/img/vehicles/"
-    }[type]
+    }[type] //lo mismo en este caso para las imagenes
 
     //switch para mostrar los props en la InfoCard segun el type
     const displayedProps = (item) => {

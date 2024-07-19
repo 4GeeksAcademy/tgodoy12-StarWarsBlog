@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext.js";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import starwars from "../../img/icons8-la-guerra-de-las-galaxias-50.png";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+	const nav = useNavigate();
 	
 	// console.log(store.favorites);
 	return (
@@ -12,9 +13,9 @@ export const Navbar = () => {
 
 			<div className="container">
 				<div className="icon">
-					<a className="navbar-brand ms-4 me-0" href="#">
-						<img src={starwars} />
-					</a>
+				<button onClick={() => nav("/")} className="button-with-image">
+            		<img src={starwars} alt="Star Wars" />
+        		</button>
 				</div>
 
 				{/* Likes (orange heart) dropdown button */}

@@ -29,7 +29,7 @@ const Infocard = (props) => {
             <img src={props.img} onError={(e) => { e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg";
                 e.target.style.maxHeight = "286px";}} className="card-img-top" alt={props.name}/>
             <div className="card-body">
-                <h5 className="card-title">{props.name}</h5>
+                <h5 className="card-title fw-bold">{props.name}</h5>
 
                 {/* caso characters */}
                 {props.gender && <p className="card-text">Gender: {props.gender}</p>}
@@ -46,11 +46,12 @@ const Infocard = (props) => {
                 {props.manufacturer && <p className="card-text">Manufacturer: {props.manufacturer}</p>}
                 {props.cost && <p className="card-text">Cost: {props.cost}</p>}
 
-                <div className="d-flex justify-content-end">
+                
+                
+            </div>
+            <div className="d-flex justify-content-end mb-3 me-3">
                     <button type="button" className="btn btn-dark mx-2" onClick={() => nav(`/single/${props.type}/${props.id}`)}>+ Info</button>
                     <button type="button" className="btn btn-dark" onClick={handleLikes}><i className="fas fa-heart" style={{color: like ? "#FCA311" : "#FFFFFF"}}></i></button>
-                </div>
-                
             </div>
         </div>
     );

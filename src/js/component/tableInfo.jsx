@@ -5,7 +5,18 @@ const TableInfo = (props) => {
     //hacer un tableInfo generico para todos los types
 
 	const mapPropertys = () => {
-		const entries = Object.entries(props).slice(0, 7);
+		//segun el type, corto la cantidad de propiedades que quiero ver en pantalla
+		let entries = [];
+		if (props.type == "characters") {
+			entries = Object.entries(props).slice(0, 9);
+		} else if (props.type == "planets") {
+			entries = Object.entries(props).slice(0, 10);
+		} else if (props.type == "vehicles") {
+			entries = Object.entries(props).slice(0, 12);
+		}
+		
+		//mapeo el nombre de las propertys(keys) para que se muestren en la tabla
+		//y en td imprimo el valor
 		return entries.map(([key,value], index) => (
 			<tr key={index}>
 				<th scope="row">{key}</th>
@@ -20,39 +31,7 @@ const TableInfo = (props) => {
 			<tbody>
 				{mapPropertys()}
 			</tbody>
-			
-						{/* <tbody>
-								<tr>
-									<th scope="row">Height :</th>
-									<td>{props.height}</td>
-								</tr>
-								<tr>
-									<th scope="row">Mass :</th>
-									<td>{props.mass}</td>
-								</tr>
-								<tr>
-									<th scope="row">Hair color :</th>
-									<td>{props.hairColor}</td>
-								</tr>
-								<tr>
-									<th scope="row">Skin color :</th>
-									<td>{props.skinColor}</td>
-								</tr>
-								<tr>
-									<th scope="row">Eye color :</th>
-									<td>{props.eyeColor}</td>
-								</tr>
-								<tr>
-									<th scope="row">Birth year :</th>
-									<td>{props.birthYear}</td>
-								</tr>
-								<tr>
-									<th scope="row">Gender :</th>
-									<td>{props.gender}</td>
-								</tr>
-			
-						</tbody> */}
-					</table>
+		</table>
     );
 }
 
